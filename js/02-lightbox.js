@@ -19,7 +19,7 @@ function createMarkup(arr) {
 
 const galleryNew = new SimpleLightbox('.gallery a');
 galleryNew.on('show.simplelightbox', function () {
-    galleryNew.captions()
+    galleryNew.captionType('alt')
         .captionPosition('bottom')
         .captionDelay(250);
 });
