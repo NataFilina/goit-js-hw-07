@@ -17,9 +17,8 @@ function createMarkup(arr) {
     ).join("");
 }
 
-const galleryNew = new SimpleLightbox('.gallery a');
-galleryNew.on('show.simplelightbox', function () {
-    galleryNew.captionType('alt')
-        .captionPosition('bottom')
-        .captionDelay(250);
+const galleryNew = new SimpleLightbox('.gallery a', {
+    captionType:'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
 });

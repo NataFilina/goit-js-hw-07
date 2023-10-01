@@ -36,17 +36,17 @@ function onClick(event) {
 
      instance = basicLightbox.create(`
         <img src="${imgUrl.original}" width="800" height="600" alt="${imgUrl.description}">
-    `)
+    `,
+         {
+            onShow: (instance) => { window.addEventListener('keydown', onEscClose) },
+            onClose: (instance) => {window.removeEventListener('keydown', onEscClose)}
+         })
     instance.show()
-    
-    window.addEventListener('keydown', onEscClose); 
 }
 
 function onEscClose(event) { 
+    console.log(event.code);
     if (event.code === "Escape") {
         instance.close(); 
     } 
-    if (!instance.visible()) {
-        window.removeEventListener('keydown', onEscClose); 
-    }
 }
