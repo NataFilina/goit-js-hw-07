@@ -4,7 +4,6 @@ import { galleryItems } from './gallery-items.js';
 const gallery = document.querySelector('.gallery');
 
 gallery.insertAdjacentHTML("afterbegin", createMarkup(galleryItems));
-gallery.addEventListener('click', onClick);
 
 function createMarkup(arr) {
     return arr.map(({ preview, original, description }) => 
@@ -18,17 +17,9 @@ function createMarkup(arr) {
     ).join("");
 }
 
-function onClick(event) {
-    event.preventDefault();
-    if (event.target === event.currentTarget) {
-        return
-    }
-    const galleryNew = new SimpleLightbox('.gallery a');
-    galleryNew.on('show.simplelightbox', function () {
-        event.captions()
-            .captionPosition('bottom')
-            .captionDelay(250);
-    });
-    
-}
-    
+const galleryNew = new SimpleLightbox('.gallery a');
+galleryNew.on('show.simplelightbox', function () {
+    galleryNew.captions()
+        .captionPosition('bottom')
+        .captionDelay(250);
+});
